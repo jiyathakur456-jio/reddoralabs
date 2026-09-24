@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>RedDoraLabs — OSINT Investigation Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a2e;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #111827 100%);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header img {
+      height: 32px;
+    }
+
+    .header-right p {
+      font-size: 9px;
+      color: #9ca3af;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .header-right a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .content {
+      padding: 32px 52px;
+    }
+
+    .report-title {
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .report-title h1 {
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #1a1a2e;
+    }
+
+    .report-title p {
+      font-size: 10px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .classification {
+      text-align: center;
+      margin: 12px 0 20px;
+    }
+
+    .classification span {
+      display: inline-block;
+      background: #dc2626;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .info-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+
+    .info-box h4 {
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .info-box p {
+      font-size: 10px;
+      color: #374151;
+      line-height: 1.7;
+    }
+
+    .info-box p strong {
+      color: #1a1a2e;
+    }
+
+    .section {
+      margin-bottom: 18px;
+    }
+
+    .section h3 {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #0ea5e9;
+      display: inline-block;
+    }
+
+    .section p {
+      font-size: 10px;
+      line-height: 1.9;
+      color: #374151;
+      text-align: justify;
+      margin-bottom: 6px;
+    }
+
+    .section p strong {
+      color: #1a1a2e;
+    }
+
+    .section ul {
+      margin: 6px 0 6px 20px;
+      font-size: 10px;
+      color: #374151;
+      line-height: 1.9;
+    }
+
+    .section ul li {
+      margin-bottom: 3px;
+    }
+
+    .evidence-box {
+      background: #0a0a0f;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 10px 0;
+    }
+
+    .evidence-box h4 {
+      font-size: 8px;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .evidence-box p {
+      font-size: 10px;
+      color: #d1d5db;
+      line-height: 1.8;
+      font-family: 'Courier New', monospace;
+    }
+
+    .evidence-box .label {
+      color: #9ca3af;
+    }
+
+    .evidence-box .value {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .evidence-box .redacted {
+      color: #f87171;
+    }
+
+    .finding-card {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin: 8px 0;
+    }
+
+    .finding-card h4 {
+      font-size: 9px;
+      font-weight: 700;
+      color: #0ea5e9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .finding-card p {
+      font-size: 10px;
+      color: #374151;
+      line-height: 1.8;
+    }
+
+    .confidence {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .confidence.high {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .confidence.medium {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .confidence.low {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .disclaimer {
+      background: #fefce8;
+      border: 1px solid #fde047;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-top: 16px;
+    }
+
+    .disclaimer h4 {
+      font-size: 8px;
+      font-weight: 700;
+      color: #854d0e;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .disclaimer p {
+      font-size: 9px;
+      color: #713f12;
+      line-height: 1.8;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 10px 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer p {
+      font-size: 8px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE 1: COVER + CASE OVERVIEW -->
+  <div class="page">
+    <div class="header">
+      <div><img src="./public/logo-horizontal.png" alt="RedDoraLabs" /></div>
+      <div class="header-right">
+        <p><a href="https://reddoralabs.com">reddoralabs.com</a><br />prem@reddoralabs.com<br />+91 96996
+          46517<br />CIN: U62099MR2026PTC478260</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="report-title">
+        <h1>OSINT Investigation Report</h1>
+        <p>Open Source Intelligence — Identity Attribution Analysis</p>
+      </div>
+
+      <div class="classification">
+        <span>Confidential — Client Eyes Only</span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h4>Case Reference</h4>
+          <p><strong>RDL/CASE/2026/001</strong></p>
+        </div>
+        <div class="info-box">
+          <h4>Date of Report</h4>
+          <p><strong>___/07/2026</strong></p>
+        </div>
+        <div class="info-box">
+          <h4>Prepared By</h4>
+          <p><strong>Prem Patil</strong><br />Lead Investigator, RedDoraLabs</p>
+        </div>
+        <div class="info-box">
+          <h4>Prepared For</h4>
+          <p><strong>_________________________</strong><br />(Client Name)</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>1. Executive Summary</h3>
+        <p>
+          RedDoraLabs was engaged to conduct an Open Source Intelligence (OSINT) investigation to identify the
+          individual
+          behind a social media account that was used to post unauthorized photographs of the Client. The account was
+          subsequently deactivated by its creator. The Client provided initial leads including partial email and phone
+          number data obtained from the platform's password reset feature.
+        </p>
+        <p>
+          Through systematic OSINT analysis, our investigation has identified the suspected individual with
+          <span class="confidence high">High Confidence</span>. The findings and supporting evidence are detailed below.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>2. Case Background</h3>
+        <p><strong>Nature of Incident:</strong> Creation of a fake/impersonation social media account containing
+          unauthorized photographs of the Client.</p>
+        <p><strong>Account Status:</strong> Deactivated at the time of investigation.</p>
+        <p><strong>Client's Initial Input:</strong></p>
+        <ul>
+          <li>Partial email address visible during password reset attempt (first/last characters)</li>
+          <li>Partial phone number visible during password reset attempt (last digits)</li>
+          <li>Pre-existing suspicion on a known individual</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. Methodology</h3>
+        <p>The following OSINT techniques were employed during this investigation:</p>
+        <ul>
+          <li><strong>Email Pattern Analysis:</strong> Cross-referencing partial email with known email naming
+            conventions and publicly available data</li>
+          <li><strong>Phone Number Correlation:</strong> Matching partial phone digits against publicly accessible
+            directories and linked accounts</li>
+          <li><strong>Social Media Cross-Referencing:</strong> Analyzing connected/linked accounts, follower patterns,
+            and account metadata</li>
+          <li><strong>Digital Footprint Analysis:</strong> Examining publicly available records, profiles, and online
+            presence</li>
+          <li><strong>Behavioral Pattern Analysis:</strong> Assessing timing, content patterns, and account creation
+            behavior</li>
+        </ul>
+        <p style="margin-top: 6px;"><strong>Tools Used:</strong> Publicly available OSINT frameworks, search engines,
+          social media platform features, and reverse lookup services. <em>No unauthorized access or illegal methods
+            were employed.</em></p>
+      </div>
+
+      <div class="section">
+        <h3>4. Findings</h3>
+
+        <div class="evidence-box">
+          <h4>Evidence A — Email Pattern Match</h4>
+          <p>
+            <span class="label">Platform Reset Shows:</span> <span class="value">p●●●●●●●●@g●●●●.com</span><br />
+            <span class="label">Suspected Match:</span> <span class="redacted">[FILL IN — e.g.,
+              pr*****12@gm***.com]</span><br />
+            <span class="label">Pattern Match:</span> <span class="value">✓ CONFIRMED — Characters and length
+              match</span>
+          </p>
+        </div>
+
+        <div class="evidence-box">
+          <h4>Evidence B — Phone Number Match</h4>
+          <p>
+            <span class="label">Platform Reset Shows:</span> <span class="value">●●●●●●●●XX</span><br />
+            <span class="label">Suspected Match:</span> <span class="redacted">[FILL IN — e.g., ********17]</span><br />
+            <span class="label">Digit Match:</span> <span class="value">✓ CONFIRMED — Last digits match</span>
+          </p>
+        </div>
+
+        <div class="finding-card">
+          <h4>Finding 1 — Email Attribution</h4>
+          <p>The partial email address visible during the password reset process matches the suspected individual's
+            known email address in character count, first letter, domain, and visible characters. <span
+              class="confidence high">High Confidence</span></p>
+        </div>
+
+        <div class="finding-card">
+          <h4>Finding 2 — Phone Number Attribution</h4>
+          <p>The partial phone number visible during password reset matches the suspected individual's known phone
+            number in the visible digit positions. <span class="confidence high">High Confidence</span></p>
+        </div>
+
+        <div class="finding-card">
+          <h4>Finding 3 — Additional OSINT Correlation</h4>
+          <p>[FILL IN any additional findings — social media connections, mutual followers, timing analysis, IP-related
+            data, linked accounts, etc.] <span class="confidence medium">Medium Confidence</span></p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>5. Conclusion</h3>
+        <p>
+          Based on the convergence of multiple independent data points — email pattern match, phone number match, and
+          additional OSINT correlations — it is our assessment that the suspected individual identified by the Client
+          is, with <span class="confidence high">High Confidence</span>, the person behind the deactivated account.
+        </p>
+        <p>
+          The evidence gathered through open-source methods is consistent and corroborative. However, as this
+          investigation relies solely on publicly available information, absolute certainty cannot be established
+          without platform-level data (which requires legal process).
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>6. Recommendations</h3>
+        <ul>
+          <li><strong>Document Everything:</strong> Preserve all screenshots, URLs, and evidence before they are deleted
+            or altered.</li>
+          <li><strong>Platform Report:</strong> File a formal report with the social media platform for
+            impersonation/harassment.</li>
+          <li><strong>Legal Action (Optional):</strong> If the Client wishes to pursue legal action, this report can be
+            presented as preliminary evidence to law enforcement or a cybercrime cell. An FIR can be filed under IT Act
+            Section 66C (Identity Theft) and Section 66D (Cheating by Personation).</li>
+          <li><strong>Cybercrime Portal:</strong> The Client may file a complaint at <strong>cybercrime.gov.in</strong>
+            (National Cyber Crime Reporting Portal).</li>
+        </ul>
+      </div>
+
+      <div class="disclaimer">
+        <h4>⚠ Disclaimer</h4>
+        <p>This report is based entirely on publicly available, open-source information. RedDoraLabs does not engage in
+          hacking, unauthorized access, or any illegal data acquisition methods. The findings represent our professional
+          assessment based on available evidence but do not constitute legal proof. The Client is solely responsible for
+          any actions taken based on this report. RedDoraLabs shall not be held liable for consequences arising from the
+          use or misuse of the information contained herein.</p>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div style="height: 50px; width: 200px; border-bottom: 1px solid #d1d5db; margin-bottom: 6px;"></div>
+        <p style="font-size: 9.5px; color: #6b7280; line-height: 1.7;">
+          <strong style="color: #1a1a2e; font-size: 10px;">Prem Patil</strong><br />
+          Lead Investigator & Director<br />
+          Reddora Labs Private Limited<br />
+          prem@reddoralabs.com
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Reddora Labs Private Limited · CONFIDENTIAL · reddoralabs.com</p>
+      <p>Case: RDL/CASE/2026/001</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

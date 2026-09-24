@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>RedDoraLabs — Service Agreement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a2e;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #111827 100%);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header img {
+      height: 32px;
+    }
+
+    .header-right p {
+      font-size: 9px;
+      color: #9ca3af;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .header-right a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .content {
+      padding: 36px 52px;
+    }
+
+    .doc-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .doc-title h1 {
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #1a1a2e;
+    }
+
+    .doc-title p {
+      font-size: 10px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .meta-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .meta-box h4 {
+      font-size: 8px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .meta-box p {
+      font-size: 10.5px;
+      color: #374151;
+      line-height: 1.8;
+    }
+
+    .meta-box p strong {
+      color: #1a1a2e;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .section p {
+      font-size: 10.5px;
+      line-height: 1.9;
+      color: #374151;
+      text-align: justify;
+      margin-bottom: 8px;
+    }
+
+    .section p strong {
+      color: #1a1a2e;
+    }
+
+    .section ul {
+      margin: 8px 0 8px 20px;
+      font-size: 10.5px;
+      color: #374151;
+      line-height: 1.9;
+    }
+
+    .section ul li {
+      margin-bottom: 4px;
+    }
+
+    .highlight {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-left: 4px solid #0ea5e9;
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin: 12px 0;
+    }
+
+    .highlight p {
+      font-size: 10px;
+      color: #0c4a6e;
+      margin: 0;
+    }
+
+    .sig-section {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .sig-block {
+      width: 45%;
+    }
+
+    .sig-line {
+      height: 50px;
+      border-bottom: 1px solid #d1d5db;
+      margin-bottom: 6px;
+    }
+
+    .sig-block p {
+      font-size: 9.5px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .sig-block p strong {
+      color: #1a1a2e;
+      font-size: 10px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 10px 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer p {
+      font-size: 8px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+    <div class="header">
+      <div><img src="./public/logo-horizontal.png" alt="RedDoraLabs" /></div>
+      <div class="header-right">
+        <p><a href="https://reddoralabs.com">reddoralabs.com</a><br />prem@reddoralabs.com<br />+91 96996
+          46517<br />CIN: U62099MR2026PTC478260</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="doc-title">
+        <h1>Service Agreement</h1>
+        <p>Engagement Terms for Professional Services</p>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-box">
+          <h4>Service Provider</h4>
+          <p><strong>Reddora Labs Private Limited</strong><br />CIN: U62099MR2026PTC478260<br />Nr Gavdevi Temple
+            Mandwa, Alibag<br />Raigarh(MH) - 402201<br />prem@reddoralabs.com</p>
+        </div>
+        <div class="meta-box">
+          <h4>Client</h4>
+          <p><strong>__________________________</strong><br />Email: ______________________<br />Phone:
+            ______________________<br />Address: ____________________<br />_____________________________</p>
+        </div>
+      </div>
+
+      <div class="meta-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="meta-box">
+          <h4>Agreement Date</h4>
+          <p><strong>___/___/2026</strong></p>
+        </div>
+        <div class="meta-box">
+          <h4>Reference No.</h4>
+          <p><strong>RDL/CASE/2026/001</strong></p>
+        </div>
+        <div class="meta-box">
+          <h4>Service Type</h4>
+          <p><strong>OSINT Investigation</strong></p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>1. Scope of Work</h3>
+        <p>RedDoraLabs shall provide the following services to the Client:</p>
+        <ul>
+          <li><strong>Open Source Intelligence (OSINT) Investigation</strong> — identification of an individual or
+            entity behind a specified online account/profile using publicly available information and ethical
+            investigation methodologies.</li>
+          <li>Analysis of digital footprints, publicly available records, and open-source data to establish identity
+            attribution.</li>
+          <li>Compilation of findings into a formal <strong>Investigation Report</strong> with supporting evidence.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>2. Deliverables</h3>
+        <ul>
+          <li>Detailed <strong>OSINT Investigation Report</strong> containing findings, methodology used, and evidence
+            collected.</li>
+          <li>Summary of identified digital identifiers (email patterns, phone linkages, account correlations).</li>
+          <li>Recommendations for further action, if applicable.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. Timeline</h3>
+        <p>The investigation shall be completed within <strong>3-5 business days</strong> from the date of this
+          agreement, unless additional time is required due to the complexity of the case. The Client will be informed
+          of any delays in advance.</p>
+      </div>
+
+      <div class="section">
+        <h3>4. Confidentiality</h3>
+        <p>RedDoraLabs shall maintain <strong>strict confidentiality</strong> of all information provided by the Client
+          and all findings of the investigation. No data shall be shared with third parties without the Client's
+          explicit written consent. All case files will be securely stored and retained for a period of <strong>90
+            days</strong> after delivery, after which they will be permanently deleted unless otherwise requested.</p>
+      </div>
+
+      <div class="section">
+        <h3>5. Ethical & Legal Compliance</h3>
+        <p>All investigation activities shall be conducted using <strong>legal and ethical methods only</strong>.
+          RedDoraLabs exclusively uses open-source, publicly accessible information. No hacking, unauthorized access,
+          social engineering, or illegal data acquisition methods will be employed. The Client acknowledges that results
+          are based on publicly available information and may not be 100% conclusive.</p>
+      </div>
+
+      <div class="section">
+        <h3>6. Limitation of Liability</h3>
+        <p>RedDoraLabs provides findings on a <strong>best-effort basis</strong> using publicly available data. We do
+          not guarantee the completeness or absolute accuracy of results. RedDoraLabs shall not be liable for any
+          actions taken by the Client based on the findings of this investigation. The Client is solely responsible for
+          how they use the information provided.</p>
+      </div>
+
+      <div class="section">
+        <h3>7. Payment Terms</h3>
+        <p>The fee for the services outlined in this agreement is detailed in the attached <strong>Invoice
+            (RDL/INV/2026/001)</strong>. Payment terms, applicable discounts, and final amounts are as specified in the
+          invoice.</p>
+      </div>
+
+      <div class="sig-section">
+        <div class="sig-block">
+          <div class="sig-line"></div>
+          <p><strong>For RedDoraLabs</strong><br />Prem Patil — Director<br />Date: ___/___/2026</p>
+        </div>
+        <div class="sig-block">
+          <div class="sig-line"></div>
+          <p><strong>Client</strong><br />Name: ________________<br />Date: ___/___/2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Reddora Labs Private Limited · CIN: U62099MR2026PTC478260 · reddoralabs.com</p>
+      <p>Page 1 of 1</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

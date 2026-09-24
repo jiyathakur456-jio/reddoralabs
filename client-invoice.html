@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RedDoraLabs — Invoice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @page { size: A4; margin: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f5f5f5; color: #1a1a2e; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page { width: 210mm; min-height: 297mm; margin: 20px auto; background: #fff; position: relative; overflow: hidden; }
+    @media print { body { background: #fff; } .page { margin: 0; } }
+
+    .header { background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #111827 100%); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .header img { height: 32px; }
+    .header-right p { font-size: 9px; color: #9ca3af; text-align: right; line-height: 1.8; }
+    .header-right a { color: #60a5fa; text-decoration: none; }
+
+    .content { padding: 36px 52px; }
+
+    .invoice-title { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+    .invoice-title h1 { font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; color: #1a1a2e; }
+    .invoice-meta { text-align: right; }
+    .invoice-meta p { font-size: 10px; color: #6b7280; line-height: 2; }
+    .invoice-meta strong { color: #1a1a2e; font-size: 11px; }
+
+    .parties { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .party-box { }
+    .party-box h4 { font-size: 8px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .party-box p { font-size: 10.5px; color: #374151; line-height: 1.8; }
+    .party-box p strong { color: #1a1a2e; }
+
+    table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    thead th { background: #0a0a0f; color: #fff; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; text-align: left; }
+    thead th:last-child, thead th:nth-child(3), thead th:nth-child(4) { text-align: right; }
+    tbody td { font-size: 10.5px; color: #374151; padding: 14px 16px; border-bottom: 1px solid #f3f4f6; }
+    tbody td:last-child, tbody td:nth-child(3), tbody td:nth-child(4) { text-align: right; font-family: 'Inter', monospace; }
+    tbody td strong { color: #1a1a2e; }
+    tbody tr:hover { background: #f9fafb; }
+
+    .totals { display: flex; justify-content: flex-end; margin-bottom: 24px; }
+    .totals-box { width: 280px; }
+    .total-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 10.5px; color: #374151; border-bottom: 1px solid #f3f4f6; }
+    .total-row strong { color: #1a1a2e; }
+    .total-row.discount { color: #059669; }
+    .total-row.grand { background: #0a0a0f; color: #fff; padding: 12px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; margin-top: 4px; border: none; }
+
+    .stamp-badge { display: inline-block; border: 3px solid #059669; color: #059669; font-size: 14px; font-weight: 800; padding: 8px 20px; border-radius: 8px; text-transform: uppercase; letter-spacing: 2px; transform: rotate(-5deg); margin-top: 12px; }
+
+    .notes { margin-top: 24px; }
+    .notes h4 { font-size: 9px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .notes p { font-size: 9.5px; color: #6b7280; line-height: 1.8; }
+    .notes ul { font-size: 9.5px; color: #6b7280; line-height: 1.8; margin-left: 16px; }
+
+    .sig-section { margin-top: 32px; }
+    .sig-line { height: 50px; width: 200px; border-bottom: 1px solid #d1d5db; margin-bottom: 6px; }
+    .sig-section p { font-size: 9.5px; color: #6b7280; line-height: 1.7; }
+    .sig-section p strong { color: #1a1a2e; font-size: 10px; }
+
+    .footer { position: absolute; bottom: 0; left: 0; right: 0; background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 10px 52px; display: flex; justify-content: space-between; align-items: center; }
+    .footer p { font-size: 8px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="header">
+      <div><img src="./public/logo-horizontal.png" alt="RedDoraLabs" /></div>
+      <div class="header-right">
+        <p><a href="https://reddoralabs.com">reddoralabs.com</a><br/>prem@reddoralabs.com<br/>+91 96996 46517<br/>CIN: U62099MR2026PTC478260</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="invoice-title">
+        <h1>Invoice</h1>
+        <div class="invoice-meta">
+          <p><strong>Invoice No: RDL/INV/2026/001</strong></p>
+          <p>Date: ___/07/2026</p>
+          <p>Due Date: N/A (Waived)</p>
+        </div>
+      </div>
+
+      <div class="parties">
+        <div class="party-box">
+          <h4>From</h4>
+          <p>
+            <strong>Reddora Labs Private Limited</strong><br/>
+            CIN: U62099MR2026PTC478260<br/>
+            UDYAM: UDYAM-MH-27-0268884<br/>
+            Nr Gavdevi Temple Mandwa, Alibag<br/>
+            Raigarh(MH) - 402201<br/>
+            prem@reddoralabs.com
+          </p>
+        </div>
+        <div class="party-box">
+          <h4>Bill To</h4>
+          <p>
+            <strong>__________________________</strong><br/>
+            ______________________________<br/>
+            ______________________________<br/>
+            Email: _______________________<br/>
+            Phone: _______________________
+          </p>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 50%;">Description</th>
+            <th style="width: 15%;">Qty</th>
+            <th style="width: 15%;">Rate (₹)</th>
+            <th style="width: 15%;">Amount (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>
+              <strong>OSINT Investigation — Identity Attribution</strong><br/>
+              <span style="font-size: 9px; color: #9ca3af;">Open-source intelligence investigation for identification of individual behind a specified online account. Includes digital footprint analysis, account correlation, and detailed report.</span>
+            </td>
+            <td>1</td>
+            <td>7,500.00</td>
+            <td>7,500.00</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>
+              <strong>Investigation Report — Documentation & Evidence Compilation</strong><br/>
+              <span style="font-size: 9px; color: #9ca3af;">Professional compilation of findings with evidence documentation, methodology disclosure, and actionable recommendations.</span>
+            </td>
+            <td>1</td>
+            <td>2,500.00</td>
+            <td>2,500.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="totals">
+        <div class="totals-box">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <strong>₹10,000.00</strong>
+          </div>
+          <div class="total-row">
+            <span>GST (18%)</span>
+            <span>N/A *</span>
+          </div>
+          <div class="total-row discount">
+            <span>Courtesy Discount (100%)</span>
+            <strong>- ₹10,000.00</strong>
+          </div>
+          <div class="total-row grand">
+            <span>Total Due</span>
+            <span>₹0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: -8px;">
+        <span class="stamp-badge">✓ Paid — Courtesy</span>
+      </div>
+
+      <p style="font-size: 9px; color: #9ca3af; margin-top: 8px;">* GST not applicable — company is below the GST threshold and not currently registered under GST.</p>
+
+      <div class="notes">
+        <h4>Notes & Terms</h4>
+        <ul>
+          <li>This engagement was provided as a <strong>courtesy service</strong>. Standard pricing is reflected above for reference.</li>
+          <li>All findings are based on publicly available, open-source information.</li>
+          <li>RedDoraLabs does not guarantee the absolute accuracy of OSINT findings.</li>
+          <li>This invoice is for record-keeping purposes. No payment is required.</li>
+          <li>Standard engagement pricing for OSINT services starts at ₹7,500.</li>
+        </ul>
+      </div>
+
+      <div class="sig-section">
+        <div class="sig-line"></div>
+        <p>
+          <strong>Prem Patil</strong><br/>
+          Director, Reddora Labs Private Limited<br/>
+          prem@reddoralabs.com
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Reddora Labs Private Limited · CIN: U62099MR2026PTC478260 · reddoralabs.com</p>
+      <p>Invoice: RDL/INV/2026/001</p>
+    </div>
+  </div>
+
+</body>
+</html>

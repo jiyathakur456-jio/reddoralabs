@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RedDoraLabs — Internship Offer Letter — Hitika Chhatlani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a2e;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #111827 100%);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed, #ef4444, #00d4ff);
+    }
+
+    .header-logo {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .header-right {
+      text-align: right;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-right p {
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+    }
+
+    .header-right a {
+      color: #00d4ff;
+      text-decoration: none;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      padding: 32px 52px;
+    }
+
+    /* ===== DOCUMENT LABEL ===== */
+    .doc-label {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .doc-label h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0a0a0f;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .doc-label h1::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      border-radius: 2px;
+    }
+
+    .doc-meta {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #6b7280;
+    }
+
+    .doc-meta strong {
+      color: #1a1a2e;
+    }
+
+    /* ===== LETTER BODY ===== */
+    .letter-body {
+      margin-top: 28px;
+    }
+
+    .salutation {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+    }
+
+    .letter-body p {
+      font-size: 11.5px;
+      line-height: 1.85;
+      color: #374151;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .letter-body p strong {
+      color: #1a1a2e;
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #00d4ff;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box h3 {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+    }
+
+    .highlight-item {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .highlight-item .label {
+      font-size: 10px;
+      color: #6b7280;
+      min-width: 100px;
+      font-weight: 500;
+    }
+
+    .highlight-item .value {
+      font-size: 10.5px;
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+
+    /* ===== SIGNATURE SECTION ===== */
+    .signature-section {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .signature-block {
+      width: 45%;
+    }
+
+    .sig-area {
+      height: 10px;
+      border-bottom: 1px solid #d1d5db;
+      margin-bottom: 8px;
+    }
+
+    .signature-block p {
+      font-size: 10px;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    .signature-block p strong {
+      color: #1a1a2e;
+      font-size: 11px;
+    }
+
+
+
+    /* ===== FOOTER ===== */
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      padding: 12px 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer p {
+      font-size: 8px;
+      color: #9ca3af;
+      letter-spacing: 0.3px;
+    }
+
+    .footer .page-num {
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    /* ===== ANNEXURE STYLES ===== */
+    .annexure-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .annexure-title h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0a0a0f;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .annexure-title p {
+      font-size: 10px;
+      color: #6b7280;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .clause {
+      margin-bottom: 18px;
+    }
+
+    .clause-number {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 4px;
+    }
+
+    .clause p {
+      font-size: 10.5px;
+      line-height: 1.8;
+      color: #374151;
+      text-align: justify;
+    }
+
+    .clause p strong {
+      color: #1a1a2e;
+    }
+
+    .clause ul {
+      margin: 8px 0 8px 20px;
+      font-size: 10.5px;
+      color: #374151;
+      line-height: 1.8;
+    }
+
+    .clause ul li {
+      margin-bottom: 4px;
+    }
+
+    /* ===== ACKNOWLEDGMENT ===== */
+    .acknowledgment {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 28px;
+    }
+
+    .acknowledgment h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .acknowledgment p {
+      font-size: 10px;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+
+    .ack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 40px;
+    }
+
+    .ack-field {
+      border-bottom: 1px solid #d1d5db;
+      padding-bottom: 4px;
+      min-height: 40px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .ack-field span {
+      font-size: 10px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .confidential {
+      text-align: center;
+      padding: 6px;
+      font-size: 7.5px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== PAGE 1: OFFER LETTER ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="header-logo">
+        <img src="./public/logo-horizontal.png" alt="RedDoraLabs" />
+      </div>
+      <div class="header-right">
+        <p>
+          <a href="https://reddoralabs.com">reddoralabs.com</a><br />
+          prem@reddoralabs.com<br />
+          +91 96996 46517<br />
+          Udyam: UDYAM-MH-27-0261181
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="doc-label">
+        <h1>Internship Offer Letter</h1>
+      </div>
+
+      <div class="doc-meta">
+        <div><strong>Date:</strong> 12 July, 2026</div>
+        <div><strong>Ref:</strong> RDL/INTERN/2026/001-v2</div>
+      </div>
+
+      <div class="letter-body">
+        <p class="salutation">Dear Hitika Chhatlani,</p>
+
+        <p>
+          On behalf of <strong>RedDoraLabs</strong>, I am pleased to extend this offer of internship for the position of
+          <strong>Content Writing Intern</strong>. After a thorough evaluation of your application and demonstrated
+          capabilities,
+          we are confident that your skills in content creation, technical writing, and creative communication
+          align well with our team's objectives. We are excited to welcome you aboard.
+        </p>
+
+        <p>
+          RedDoraLabs is a cybersecurity and AI solutions company committed to securing digital infrastructure for
+          startups, enterprises, and organizations worldwide. As part of our team, you will contribute directly to
+          our brand communication, thought leadership content, and digital presence — playing a key role in how
+          RedDoraLabs is perceived across the industry.
+        </p>
+
+        <div class="highlight-box">
+          <h3>Appointment Summary</h3>
+          <div class="highlight-grid">
+            <div class="highlight-item">
+              <span class="label">Position:</span>
+              <span class="value">Content Writing Intern</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Department:</span>
+              <span class="value">Marketing & Communications</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Start Date:</span>
+              <span class="value">01 July, 2026</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Duration:</span>
+              <span class="value">3 Months</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Work Mode:</span>
+              <span class="value">Remote (Assignment-Based)</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Reporting To:</span>
+              <span class="value">Prem Patil, Founder & CEO</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Stipend:</span>
+              <span class="value">Performance-Based Incentive</span>
+            </div>
+            <div class="highlight-item">
+              <span class="label">Payment Method:</span>
+              <span class="value">PayPal</span>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          During this internship, you will be entrusted with creating high-quality written content across multiple
+          platforms
+          including LinkedIn, Instagram, Twitter/X, YouTube scripts, blog articles, technical documentation, and
+          marketing
+          collateral. This is a hands-on role where your work will directly impact RedDoraLabs' brand positioning and
+          audience engagement.
+        </p>
+
+        <p>
+          We believe this internship will provide you with invaluable industry experience, mentorship from the founding
+          team,
+          and exposure to real-world projects at the intersection of cybersecurity, AI, and brand communications.
+          Upon successful completion, based on mutual interest and business needs, there may be an opportunity to
+          explore a continued association with RedDoraLabs.
+        </p>
+
+        <p>
+          Your appointment will be governed by the terms and conditions outlined in <strong>Annexure A</strong>,
+          attached herewith.
+          Please review all terms carefully. By accepting this offer, you agree to comply with all policies and
+          guidelines of RedDoraLabs.
+        </p>
+
+        <p>
+          We kindly request you to confirm your acceptance of this offer by <strong>15 July, 2026</strong> by signing
+          and returning
+          a scanned copy of this letter along with the signed Annexure A to <strong>prem@reddoralabs.com</strong>.
+        </p>
+
+        <p style="margin-top: 8px;">
+          We look forward to having you on the team. Welcome to RedDoraLabs!
+        </p>
+
+        <div class="signature-section">
+          <div class="signature-block">
+            <div class="sig-area"></div>
+            <p>
+              <strong>Prem Patil</strong><br />
+              Founder & CEO<br />
+              RedDoraLabs<br />
+              prem@reddoralabs.com
+            </p>
+          </div>
+          <div class="stamp-area">
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>RedDoraLabs · Cybersecurity & AI Solutions · reddoralabs.com</p>
+      <p class="page-num">Page 1 of 3</p>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: ANNEXURE A ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="header-logo">
+        <img src="./public/logo-horizontal.png" alt="RedDoraLabs" />
+      </div>
+      <div class="header-right">
+        <p>
+          <a href="https://reddoralabs.com">reddoralabs.com</a><br />
+          prem@reddoralabs.com<br />
+          +91 96996 46517<br />
+          Udyam: UDYAM-MH-27-0261181
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="annexure-title">
+        <h1>Annexure A</h1>
+        <p>Terms & Conditions of Internship</p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">1. Role & Responsibilities</div>
+        <p>
+          You have been appointed as a <strong>Content Writing Intern</strong> in the <strong>Marketing &
+            Communications</strong> team.
+          Your Reporting Manager and Mentor during this internship will be <strong>Mr. Prem Patil (Founder &
+            CEO)</strong>.
+          Your primary responsibilities will include but are not limited to:
+        </p>
+        <ul>
+          <li>Writing and editing content for LinkedIn, Instagram, Twitter/X, and other social platforms</li>
+          <li>Drafting scripts for YouTube videos and educational content</li>
+          <li>Creating blog articles, case studies, and technical documentation</li>
+          <li>Developing marketing copy, email campaigns, and brand communications</li>
+          <li>Collaborating with the team on content strategy and planning</li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">2. Duration & Commencement</div>
+        <p>
+          The internship commences on <strong>01 July, 2026</strong> and concludes after a duration of
+          <strong>3 months (01 October, 2026)</strong>, unless extended by mutual written agreement. During this period,
+          you are expected to
+          dedicate your time and efforts to RedDoraLabs. Any upcoming events, unavailability, or scheduling conflicts
+          must be communicated to your mentor in advance for proper planning.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">3. Work Structure & Schedule</div>
+        <p>
+          This internship follows an <strong>assignment-based work model</strong>. There are <strong>no fixed working
+            hours</strong>.
+          Tasks and assignments will be communicated by your mentor on a regular basis, and you are expected to complete
+          them
+          within the mutually agreed deadlines. You have the flexibility to manage your own schedule as long as
+          deliverables
+          are submitted on time and quality standards are met.
+        </p>
+        <p>
+          The internship will be conducted in <strong>Remote</strong> mode. You are expected to remain responsive on
+          designated communication channels (WhatsApp, Email, or project management tools) during reasonable hours
+          and attend scheduled team meetings and review sessions.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">4. Compensation & Payment</div>
+        <p>
+          This internship follows a <strong>performance-based incentive model</strong>. There is no fixed monthly
+          stipend.
+          Instead, compensation is directly tied to measurable outcomes generated by your work. The structure is as
+          follows:
+        </p>
+        <ul>
+          <li><strong>Incentive Basis:</strong> When your content or efforts contribute to a measurable business outcome
+            (e.g., a qualified lead, client conversion, or successful campaign), you will receive a percentage-based
+            incentive from the revenue generated.</li>
+          <li><strong>Payment Cycle:</strong> Incentives are calculated and disbursed on a <strong>monthly
+              basis</strong>,
+            within 15 days of the end of each calendar month, for all qualifying outcomes in that month.</li>
+          <li><strong>Payment Method:</strong> All payments will be processed via <strong>PayPal</strong> to your
+            registered
+            PayPal account. You are responsible for maintaining an active PayPal account.</li>
+          <li><strong>Transparency:</strong> A summary of qualifying outcomes and corresponding incentive calculations
+            will be shared with you before each disbursement.</li>
+        </ul>
+        <p>
+          The specific incentive percentage will be communicated by your mentor on a case-by-case basis depending on
+          the nature and value of the outcome. RedDoraLabs reserves the right to modify the incentive structure with
+          prior written notice.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">5. Intellectual Property</div>
+        <p>
+          All work produced during your association with RedDoraLabs, including but not limited to written content,
+          designs,
+          strategies, documentation, code, and any intellectual property, shall be the <strong>exclusive property of
+            RedDoraLabs</strong>.
+          Sharing, storing, selling, distributing, or repurposing such work for personal use or third parties is
+          strictly
+          prohibited without prior written consent. You may reference your work in your personal portfolio with prior
+          approval
+          from your mentor.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">6. Confidentiality & Data Privacy</div>
+        <p>
+          Upholding data privacy and security is of utmost importance. You are responsible for maintaining the
+          confidentiality
+          of any data, client information, business strategies, and contact details you may access during the
+          internship.
+          At the conclusion of the internship, you are required to:
+        </p>
+        <ul>
+          <li><strong>Hand over all related data, files, and documents to RedDoraLabs</strong></li>
+          <li><strong>Delete all such data from your personal devices and storage</strong></li>
+          <li><strong>Revoke access to any shared accounts or tools</strong></li>
+        </ul>
+        <p>
+          Breach of confidentiality may result in immediate termination and may attract legal consequences.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">7. Exclusivity</div>
+        <p>
+          During the internship period, you may continue your academic studies and coursework. However, engagement with
+          any <strong>competing organization</strong> in the cybersecurity, AI, or content services space is not
+          permitted
+          without prior disclosure and written approval from RedDoraLabs.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">8. Termination & Notice Period</div>
+        <p>
+          Either party may terminate this internship with a <strong>notice period of 15 days</strong> under normal
+          circumstances.
+          RedDoraLabs reserves the right to terminate the internship immediately in case of misconduct, breach of
+          confidentiality,
+          non-compliance with Annexure A, or any behavior that damages the company's reputation or interests.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>RedDoraLabs · Cybersecurity & AI Solutions · reddoralabs.com</p>
+      <p class="page-num">Page 2 of 3</p>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3: ANNEXURE A (Continued) + ACKNOWLEDGMENT ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="header-logo">
+        <img src="./public/logo-horizontal.png" alt="RedDoraLabs" />
+      </div>
+      <div class="header-right">
+        <p>
+          <a href="https://reddoralabs.com">reddoralabs.com</a><br />
+          prem@reddoralabs.com<br />
+          +91 96996 46517<br />
+          Udyam: UDYAM-MH-27-0261181
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="annexure-title" style="margin-bottom: 20px;">
+        <h1 style="font-size: 16px; letter-spacing: 2px;">Annexure A <span style="font-weight: 400; font-size: 12px;">—
+            Continued</span></h1>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">9. Professional Conduct</div>
+        <p>
+          Professional conduct is expected in all interactions with mentors, team members, clients, partners, and the
+          public.
+          You are expected to represent RedDoraLabs with integrity and professionalism at all times, including in online
+          interactions and on social media platforms.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">10. Innovation & Initiative</div>
+        <p>
+          RedDoraLabs values creativity, initiative, and a willingness to go beyond assigned tasks. Showcasing passion,
+          original thinking, and proactive problem-solving is highly encouraged and may be recognized through
+          appreciation,
+          recommendation letters, or other opportunities within the organization.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">11. Feedback & Performance Review</div>
+        <p>
+          Regular feedback sessions will be conducted to evaluate your progress, provide constructive guidance, and
+          align
+          your efforts with team goals. You are encouraged to actively seek and provide feedback throughout the
+          internship.
+          Performance will be assessed on the basis of quality of work, consistency, initiative, communication, and
+          adherence
+          to deadlines.
+        </p>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">12. Deliverables Upon Completion</div>
+        <p>Upon successful completion of the internship, you will receive:</p>
+        <ul>
+          <li><strong>Internship Completion Certificate</strong> from RedDoraLabs</li>
+          <li><strong>Letter of Recommendation (LOR)</strong> — performance-based</li>
+          <li><strong>LinkedIn Endorsement</strong> from the Founder</li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <div class="clause-number">13. Ethical Standards</div>
+        <p>
+          You are expected to adhere to the highest ethical standards in all your work. Plagiarism, misrepresentation,
+          use of AI-generated content without disclosure, and any form of dishonesty will not be tolerated and may
+          result in immediate termination without notice.
+        </p>
+      </div>
+
+      <!-- Acknowledgment Section -->
+      <div class="acknowledgment">
+        <h3>Acknowledgment & Acceptance</h3>
+        <p>
+          I acknowledge that I have read, understood, and agreed to all the terms and conditions outlined in this
+          Internship Offer Letter and Annexure A. I confirm my acceptance and commit to fulfilling all responsibilities
+          and obligations stated herein. I understand that any breach of these terms may result in immediate termination
+          of this internship.
+        </p>
+
+        <div class="ack-grid">
+          <div class="ack-field">
+            <span>Date</span>
+          </div>
+          <div class="ack-field">
+            <span>Signature</span>
+          </div>
+          <div class="ack-field">
+            <span>Place</span>
+          </div>
+          <div class="ack-field">
+            <span>Full Name</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="confidential" style="margin-top: 30px;">
+        This document is confidential and intended solely for the named recipient
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>RedDoraLabs · Cybersecurity & AI Solutions · reddoralabs.com</p>
+      <p class="page-num">Page 3 of 3</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
